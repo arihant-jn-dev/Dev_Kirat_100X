@@ -1,0 +1,25 @@
+<html>
+    <body>
+        <title>TODO App</title>
+        <input type="text"></input>
+        <button onclick="addTodo()">ADD</button>
+    </body>
+    <script>
+        let ctr = 1;
+        function addTodo(){
+            console.log('adding----!');
+            const inputEle = document.querySelector("input").value;
+            const newDivEle = document.createElement("div");
+            newDivEle.setAttribute("id","todo-"+ctr);
+            console.log(newDivEle);
+            newDivEle.innerHTML = "<div>"+inputEle+'</div><button onclick="deleteTodo('+ctr+')">delete</button>';
+            document.querySelector("body").appendChild(newDivEle);
+            ctr+=1;
+        }
+        function deleteTodo(index){
+            console.log('deleting...!');
+            const delEle= document.getElementById("todo-"+index);
+            delEle.parentNode.removeChild(delEle);
+        }
+    </script>
+</html>

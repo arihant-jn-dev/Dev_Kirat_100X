@@ -1,0 +1,57 @@
+<html>
+    <body>
+        <input type="text"></input>
+        <button onclick="addToDo()">ADD ToDo</button>
+        <button onclick="deleteLastToDo()">Delete Last ToDo</button>
+        <button onclick="deleteFirstToDo()">Delete First ToDo</button>
+        <div id="todos"></div>
+        <script>
+            let todos = [];
+            function addToDo(){
+                console.log("addtodo.....!");
+                todos.push({
+                    title : document.querySelector("input").value
+                });
+                render();
+            }
+            function deleteAtIndex(index){
+                console.log("deleteAtIndex........");
+                todos.splice(index,1);
+                render();
+            }
+            function deleteLastToDo(){
+                console.log("deleteLastToDo......!")
+                todos.splice(todos.length-1,1);//remove the last element for list , which was added first
+                render();
+            }
+            function deleteFirstToDo(){
+                console.log("deleteFirstToDo......!")
+                todos.splice(0,1);//remove the last element for list
+                render();
+            }
+            //this fn will create a component which will be rendered on DOM 
+            function createToDoComponent(todo,index){
+                const divEle = document.createElement("div");
+                const spanEle = document.createElement("span");
+                const h1Ele = document.createElement("h1");
+                const buttonEle = document.createElement("button");
+                buttonEle.setAttribute("onclick","deleteAtIndex("+index+")");
+                buttonEle.innerHTML = "DELETE";
+                h1Ele.innerHTML = todo.title;
+                divEle.append(h1Ele);
+                divEle.append(buttonEle);
+                return divEle;
+            }
+            //react : call render only to see your o/p on DOM 
+            function render(){
+                console.log("render calling....");
+                document.querySelector("#todos").innerHTML = "";
+                for(let i=0;i<todos.length;i++){
+                    console.log(todos[i]);
+                    const ele = createToDoComponent(todos[i],i);
+                    document.querySelector("#todos").appendChild(ele);
+                }
+            }
+        </script>
+    </body>
+</html>

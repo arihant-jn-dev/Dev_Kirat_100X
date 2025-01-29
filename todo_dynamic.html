@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <input type="text"></input>
+        <button onclick="addToDo()">ADD ToDo</button>
+        <script>
+            function addToDo(){
+                //getting input value 
+                const value = document.querySelector("input").value;
+                //creating span and button ele 
+                const spanEle = document.createElement("span");
+                const buttonEle = document.createElement("button");
+                //setting values to span & button 
+                spanEle.innerHTML = value;
+                buttonEle.innerHTML = "DELETE";
+                //create a div and append span and button to it 
+                const divEle = document.createElement("div");
+                divEle.appendChild(spanEle);
+                divEle.appendChild(buttonEle);
+                //append div to body 
+                document.querySelector("body").appendChild(divEle);
+            }
+        </script>
+    </body>
+</html>

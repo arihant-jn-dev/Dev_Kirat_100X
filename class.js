@@ -20,4 +20,5 @@ obj_rect.paint();
 /**
  * 
  * this : in a class refers to the object instance that the class creates.(gives you the access of current obj of class)
+ * constructor : called automatically when object of class gets create 
  */
